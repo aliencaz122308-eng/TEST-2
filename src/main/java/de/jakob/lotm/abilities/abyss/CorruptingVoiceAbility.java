@@ -2,7 +2,6 @@ package de.jakob.lotm.abilities.abyss;
 
 import de.jakob.lotm.LOTMCraft;
 import de.jakob.lotm.abilities.core.ToggleAbility;
-import de.jakob.lotm.effect.ModEffects;
 import de.jakob.lotm.util.helper.AbilityUtil;
 import de.jakob.lotm.util.helper.ParticleUtil;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -141,9 +140,8 @@ public class CorruptingVoiceAbility extends ToggleAbility {
     }
 
     private static void applyRandomNegativeEffects(LivingEntity entity) {
-        int effectCount = 1 + RANDOM.nextInt(3);
-        for (int i = 0; i < effectCount; i++) {
-            int effectChoice = RANDOM.nextInt(10);
+        for (int i = 0; i < 3; i++) {
+            int effectChoice = RANDOM.nextInt(8);
             int amplifier = RANDOM.nextInt(5);
             int duration = 20 * (10 + RANDOM.nextInt(21));
 
@@ -156,8 +154,6 @@ public class CorruptingVoiceAbility extends ToggleAbility {
                 case 5 -> entity.addEffect(new MobEffectInstance(MobEffects.WITHER, duration, amplifier, false, false));
                 case 6 -> entity.addEffect(new MobEffectInstance(MobEffects.POISON, duration, amplifier, false, false));
                 case 7 -> entity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, duration, amplifier, false, false));
-                case 8 -> entity.addEffect(new MobEffectInstance(ModEffects.LOOSING_CONTROL, duration, amplifier, false, false));
-                case 9 -> entity.addEffect(new MobEffectInstance(ModEffects.MENTAL_PLAGUE, duration, amplifier, false, false));
             }
         }
     }
